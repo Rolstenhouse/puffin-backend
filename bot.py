@@ -99,9 +99,7 @@ async def main(room_url: str, token: str, prompt_id: str = None):
             voice_id="bXZsX0uAVHV9y9ZkPARP",
         )
 
-        llm = OpenAILLMService(
-            api_key=os.getenv("OPENAI_API_KEY"), model="gpt-4o", max_tokens=100
-        )
+        llm = OpenAILLMService(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-4o")
 
         messages = [
             {
