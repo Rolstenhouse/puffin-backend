@@ -80,7 +80,7 @@ async def start_room(request: Request, prompt_id: str = None):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to start subprocess: {e}")
 
-    return {"url": room_url}
+    return {"url": room_url, "pid": proc.pid}
 
 
 @app.get("/status/{pid}")

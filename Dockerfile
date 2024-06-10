@@ -14,7 +14,7 @@ COPY requirements.txt .
 RUN PIP_CACHE_DIR=$(pip cache dir) && \
     rm -rf $PIP_CACHE_DIR/http/https_github_com_Rolstenhouse_pipecat_git
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Copy app source
 COPY . .
