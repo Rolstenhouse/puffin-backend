@@ -9,6 +9,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install dependencies
 COPY requirements.txt .
+
+# Clear pipecat_fork_cache
+RUN PIP_CACHE_DIR=$(pip cache dir) && \
+    rm -rf $PIP_CACHE_DIR/http/https_github_com_Rolstenhouse_pipecat_git
+
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy app source
