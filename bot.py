@@ -166,7 +166,7 @@ async def main(room_url: str, token: str, prompt_id: str = None):
         )
         LLM_INTRO_PROMPT = {
             "role": "system",
-            "content": "You are a couple's therapist. Your goal is to get the couple to introduce themselves. Ask them how they're doing and to provide their names. (wait for them to answer before proceeding to the next question)",
+            "content": "You are acting as a couple's therapist. Your goal is to help a couple grow closer in their relationship. By guided sessions or open-ended games. Follow the prompt that comes in the next message closely.",
         }
 
         task = PipelineTask(pipeline, PipelineParams(allow_interruptions=True))

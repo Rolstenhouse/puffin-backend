@@ -34,7 +34,7 @@ numpy==1.26.4
 openai==1.26.0
 orjson==3.10.3
 pillow==10.3.0
-pipecat-ai @ git+https://github.com/Rolstenhouse/pipecat.git@2e46ae8575896a90ad07d1851f518bae215ff4ef
+pipecat-ai @ git+https://github.com/Rolstenhouse/pipecat.git@c44405e8a618a61cec2f88c52cfa5c7e897983cb
 protobuf==4.25.3
 pydantic==2.7.3
 pydantic-extra-types==2.8.0
