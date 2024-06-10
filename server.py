@@ -75,6 +75,7 @@ async def start_room(request: Request, prompt_id: str = None):
             shell=True,
             bufsize=1,
             cwd=os.path.dirname(os.path.abspath(__file__)),
+            start_new_session=True,  # This will make the subprocess to run in a new session
         )
         bot_procs[proc.pid] = (proc, room_url)
     except Exception as e:
@@ -99,6 +100,20 @@ def get_status(pid: int):
         status = "running"
     else:
         status = "finished"
+        # If the process has finished, restart it
+        try:
+            new_proc = subprocess.Popen(
+                [f"python3 -m bot -u {proc[1]} -t {get_token(proc[1])} -p {prompt_id}"],
+                shell=True,
+                bufsize=1,
+                cwd=os.path.dirname(os.path.abspath(__file__)),
+                start_new_session=True,  # This will make the subprocess to run in a new session
+            )
+            bot_procs[new_proc.pid] = (new_proc, proc[1])
+        except Exception as e:
+            raise HTTPException(
+                status_code=500, detail=f"Failed to restart subprocess: {e}"
+            )
 
     return JSONResponse({"bot_id": pid, "status": status})
 
